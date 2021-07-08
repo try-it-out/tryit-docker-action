@@ -1,14 +1,18 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
   event-data:
     description: 'information about github event'
     required: true
     default: ''
+  github-api-token:
+    description: 'github api token'
+    required: true
+    default: 'zzz'
+  twitter-api-token:
+    description: 'twitter api token'
+    required: true
+    default: 'yyy'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -16,5 +20,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
     - ${{ inputs.event-data }}
+    - ${{ inputs.github-api-token }}
+    - ${{ inputs.twitter-api-token }}
