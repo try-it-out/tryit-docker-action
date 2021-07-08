@@ -17,11 +17,11 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 
 # Add user so we don't need --no-sandbox.
 RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads \
+    && mkdir -p /home/pptruser/Downloads /github/workspace \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /
+    && chown -R pptruser:pptruser /github/workspace
 
-ADD src /
+ADD src /github/workspace
 
 # 
 RUN npm install
@@ -29,4 +29,4 @@ RUN npm install
 # Run everything after as non-privileged user.
 USER pptruser
 
-ENTRYPOINT ["/src/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
