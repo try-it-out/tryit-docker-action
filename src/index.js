@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
 	const browser = await puppeteer.launch({
+    headless: true,
 		args: ['--disable-dev-shm-usage'],
 	});
   const page = await browser.newPage();
