@@ -30,4 +30,4 @@ RUN npm install
 # Run everything after as non-privileged user.
 USER pptruser
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
