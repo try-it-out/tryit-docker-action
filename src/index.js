@@ -1,6 +1,9 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
+  process.argv.forEach((val, index) => {
+    console.log(`${index}: ${val}`);
+  });
 	const browser = await puppeteer.launch({
     headless: true,
 		args: [
