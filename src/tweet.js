@@ -21,9 +21,8 @@ module.exports = async function tweet(twitterApiKey, picture, rule, webAppUrl, w
 			json: {
 				value1: rule.id,
 				value2: rule.message,
-				value3: imgURL.toString(),
-			},
-			responseType: 'json'
+				value3: imgURL.toString()
+			}
     })
     console.log(response2.body)
 	} catch (error) {

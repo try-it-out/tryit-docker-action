@@ -17,7 +17,12 @@ module.exports = async function produceTweetImage(ruleId, message, lang) {
       '--disable-setuid-sandbox'
     ],
 	});
+
   const page = await browser.newPage();
+  await page.setViewport({
+    width: 1200,
+    height: 600
+  });
   await page.setContent(html);
   const screenshot = await page.screenshot({
     type: 'png',
