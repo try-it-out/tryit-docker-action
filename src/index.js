@@ -6,6 +6,8 @@ const tweet = require('./tweet')
 	const event = JSON.parse(process.argv[2])
 	const githubToken = process.argv[3]
 	const twitterToken = process.argv[4]
+  const webApp = process.argv[5]
+  const webAppKey = process.argv[6]
 	// fetching new rules
 	const repo = event.repository.name
 	const owner = event.repository.owner.name
@@ -22,7 +24,7 @@ const tweet = require('./tweet')
 		console.log(`creating picture for: ${rules[i].id}`)
 		const picture = await produceImage(rules[i].id, rules[i].message, rules[i].languages[0])
 		console.log(`sending tweet for: ${rules[i].id}`)
-		await tweet(twitterToken, picture, rules[i])
+		await tweet(twitterToken, picture, rules[i], webApp, webAppKey)
 	}
 	const time = (new Date()).toTimeString();
 	console.log('success!')

@@ -13,6 +13,14 @@ inputs:
     description: 'twitter api token'
     required: true
     default: 'yyy'
+  web-app:
+    description: 'web app'
+    required: true
+    default: 'uuu'
+  web-app-key:
+    description: 'web app'
+    required: true
+    default: 'uuu'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -23,3 +31,5 @@ runs:
     - ${{ inputs.event-data }}
     - ${{ inputs.github-api-token }}
     - ${{ inputs.twitter-api-token }}
+    - ${{ inputs.web-app }}
+    - ${{ inputs.web-app-key }}
