@@ -16,6 +16,6 @@ module.exports = async function tweet(twitterApiKey, picture, rulei, webAppUrl, 
 		});
 		console.log(response.body);
 	} catch (error) {
-		console.log(error.response.body);
+		console.log(error);
 	}
 }
