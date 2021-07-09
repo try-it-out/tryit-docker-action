@@ -1,9 +1,10 @@
 const puppeteer = require('puppeteer');
 const ejs = require('ejs');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = async function produceTweetImage(ruleId, message, lang) {
-	const template = await fs.promises.readFile('./index.html', 'utf8')
+	const template = await fs.promises.readFile(path.join(__dirname, 'index.html'), 'utf8')
 	const html = ejs.render(template, {
     id: ruleId, message, lang
 	})
