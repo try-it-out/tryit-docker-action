@@ -1,6 +1,6 @@
 const got = require('got')
 
-module.exports = async function tweet(twitterApiKey, picture, rulei, webAppUrl, webAppSecret) {
+module.exports = async function tweet(twitterApiKey, picture, rule, webAppUrl, webAppSecret) {
 	try {
 		const event = 'semgrep_rule_created'
 		//const response = await got.post(`https://maker.ifttt.com/trigger/${event}/with/key/${twitterApiKey}`, {
