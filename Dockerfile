@@ -23,7 +23,8 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
 
 ADD src /app
 WORKDIR /app
-# 
+# Set node environment to `production` and install only production dependencies
+ENV NODE_ENV=production
 RUN npm install
 
 # Run everything after as non-privileged user.
