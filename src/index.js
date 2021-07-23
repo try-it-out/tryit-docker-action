@@ -18,5 +18,8 @@ const action = require('./action')
 
   // run action
   await action(event, rulesFetcher, img, bot)
+
+  // clean up
+  await img.close()
   console.log('success!')
 })()
