@@ -19,8 +19,12 @@ async function twitterBotAction (event, rulesFetcher, imageGenerator, tweetBot) 
       lang: rules[i].languages[0]
     }
     const picture = await imageGenerator.produce(imgSettings)
+    const message = `New Rule in the Registry:
+🤖 ${rules[i].id} (https://semgrep.dev/r?q=${rules[i].registryId})
+
+📋 ${rules[i].message}`
     console.log(`sending tweet for: ${rules[i].id}`)
-    await tweetBot.tweet(rules[i].id, rules[i].message, picture)
+    await tweetBot.tweet(rules[i].id, message, picture)
   }
 }
 
