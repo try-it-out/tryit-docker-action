@@ -27,9 +27,8 @@ class TweetBot {
   async _sendTweet (title, message, imgUrl) {
     const response = await got.post(this.ifttUrl, {
       json: {
-        value1: title,
-        value2: message,
-        value3: imgUrl
+        value1: message,
+        value2: imgUrl
       }
     })
     return response.body
