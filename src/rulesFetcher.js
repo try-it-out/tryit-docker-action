@@ -33,10 +33,16 @@ class RulesFetcher {
       try {
         const content = await this._getFileContents(newYamlFiles[i].contents_url)
         console.log(`contents url: ${newYamlFiles[i].contents_url}`)
-        const { rules } = YAML.parse(content)
+        let { rules } = YAML.parse(content)
         if (!Array.isArray(rules)) {
           continue
         }
+        const contentsUrl = new URL(newYamlFiles[i].contents_url)
+        const idParts = contentsUrl.pathname.split('contents/')[1].replace(/\.yaml/g, '').replace(/\.yml/g, '').split('/')
+        rules = rules.map(rule => {
+          rule.registryId = [...idParts, rule.id].join('.')
+          return rule
+        })
         semgrepRules.push(...rules)
       } catch (err) {
         continue
