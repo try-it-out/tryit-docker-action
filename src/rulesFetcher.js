@@ -32,6 +32,7 @@ class RulesFetcher {
     for (let i = 0; i < newYamlFiles.length; i++) {
       try {
         const content = await this._getFileContents(newYamlFiles[i].contents_url)
+        console.log(`contents url: ${newYamlFiles[i].contents_url}`)
         const { rules } = YAML.parse(content)
         if (!Array.isArray(rules)) {
           continue
